@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Hexo搭建博客#2 - TheSecondBlock's Blog</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+    </head>
+    <body>
+        <div class="gd_head">
+            <a href="../index.html">
+                <img src="../img/Logo.png">
+            </a>
+        </div>
+        <div class="gd_main">
+            <div class="gd_block">
+                <div class="gd_box gd_post_header">
+                    <div>
+                        <h1>Hexo搭建博客#2</h1>
+                        <p>作者: TheSecondBlock 日期: 2022-03-22</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gd_block">
+                <div class="gd_menu">
+                    <a href="../index.html">首页</a><a class="this">博客</a><a href="../about.html">关于</a>
+                </div>
+            </div>
+			
+<!--提示-->
+<!--导出文章时选择without style-->
+<!--多行代码空行要用<br>-->
+<!--多行代码空格要用&nbsp;-->
+            <div class="gd_block">
+                <div class="gd_box gd_p">
+                    <h2 id="前言">前言</h2>
+                        <p>上次我们配置好了环境，这次我来教教大家怎么把你的博客（Hexo）<strong>怎么上传到Github空间！</strong></p>
+                        <h2 id="正文">正文</h2>
+                        <h3 id="10-注册github">1/0 注册GitHub</h3>
+                        <p>首先，你得有一个<strong>GitHub账号，</strong>账号需要<strong>邮箱</strong> <em>（<strong>如果你有QQ，就可以直接用:</strong></em> <strong>你的QQ号+@qq.com)</strong>，然后在进入<a href="https://github.com/" target="_blank" class="url">https://github.com/</a>，点击<strong>Sign up</strong> ，注册一个账号。</p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-26-300x188.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <h3 id="11-注册仓库">1/1 注册仓库</h3>
+                        <p>点击<strong>Create repository 创建一个仓库。</strong></p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-28-300x157.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <p>在<strong>Repository name输入你的名称+.github.io。</strong></p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-29-300x64.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <p>在下面的Initialize this repository with中选择<strong>Add a README file。</strong></p>
+                        <p><strong>现在的基本配置都已经准备好了，开始上传！</strong></p>
+                        <h3 id="20-获取密钥">2/0 获取密钥</h3>
+                        <p>打开git bash,输入</p>
+                        <pre><code>ssh-keygen -t rsa -C “your_email@youremail.com“
+                        </code></pre>
+                        <p>在"your_email@youremail.com"换上你的邮箱。</p>
+                        <p>不管出现什么信息，你只需要回车就可以了。</p>
+                        <p>然后，再输入</p>
+                        <pre><code> 
+						cat ~/.ssh/id_rsa.pub
+                        </code></pre>
+                        <p>会输出你的密钥，我们复制输出信息就行了</p>
+                        <p>然后点击头像，点击Settings--SSH·····--New SSH Key</p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-30-300x267.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <p>粘贴你复制的秘钥。</p>
+                        <p>然后打开git bash</p>
+                        <p>执行：</p>
+                        <pre><code>
+                        ssh -T git@github.com
+                        </code></pre>
+                        <p>会提示你下面这个，输入yes回车就行了</p>
+                        <p>Are you sure you want to continue connecting (yes/no/[fingerprint])?</p>
+                        <p>打开项目，点击绿色按钮，点击SSH，再点复制</p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-31-300x203.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <p>打开站点配置文件(_config.yml)</p>
+                        <p>修改deploy信息。</p>
+                        <pre><code>
+                        deploy:<br><!--多行代码空行要用<br>-->
+                        &nbsp;type: git<br><!--多行代码空格要用&nbsp;-->
+						&nbsp;repo: 你复制的地址<br>
+                        &nbsp;branch: master<br>
+                        </code></pre>
+                        <p>在博客根目录下打开git bash</p>
+                        <p>分别执行下面的命令：</p>
+                        <p>your_github_name是你github的名字</p>
+                        <p>your_github_email是你注册github时的邮箱</p>
+                        <pre><code>
+                        git config --global user.name "your_github_name"<br>
+						git config --global user.email "your_github_email"
+                        </code></pre>
+                        <p>然后安装上传插件</p>
+                        <pre><code>
+                        cnpm install hexo-deployer-git --save
+                        </code></pre>
+                        <h3 id="21-上传">2/1 上传！</h3>
+                        <p>执行</p>
+                        <pre><code>
+                        hexo g -d
+                        </code></pre>
+                        <p>或是</p>
+                        <pre><code>
+                        hexo d
+                        </code></pre>
+                        <p>就部署好了你的博客了！</p>
+                        <p>这里要注意一点：Github的分支变成了main，所以要修改。</p>
+                        <p><img src="https://public.sourcegcdn.com/heikeji/wp-uploads/2022/01/Pasted-32-300x54.png" referrerpolicy="no-referrer" alt="img"></p>
+                        <pre><code>
+                        branch: main
+                        </code></pre>
+                        <h2 id="后记">后记</h2>
+                        <p>输入你的网址，就可以看到网站了！</p>
+                </div>
+            </div>
+<!--页脚-->
+            <div id="d" class="gd_block" style="height: 145px"></div>
+                        <div class="gd_copy gd_copy_middle">
+                            <p>本站已运行<span id="momk"></span></p>
+                            <p>Copyright &copy; 2022 TheSecondBlock. All rights reserved.</p>
+                            <p><a href="https://jq.qq.com/?_wv=1027&k=xbORvNqf">QQ群</a> · <a href="http://www.thesecondblock.ml/">本站ML域名</a> · <a href="http://www.thesecondblock.ga/">本站GA域名</a></p>
+                            <br>
+                            <b>友情链接</b>
+                            <p><a href="https://gblog.tech/">生草博客</a> · <a href="https://www.314669.xyz/">西瓜博客</a></p>
+                            <script language="javascript">
+                                function show_date_time(){
+                                window.setTimeout("show_date_time()", 1000);
+                                BirthDay=new Date("02-13-2022 12:04:00");//建站日期
+                                today=new Date();
+                                timeold=(today.getTime()-BirthDay.getTime());
+                                sectimeold=timeold/1000
+                                secondsold=Math.floor(sectimeold);
+                                msPerDay=24*60*60*1000
+                                e_daysold=timeold/msPerDay
+                                daysold=Math.floor(e_daysold);
+                                e_hrsold=(daysold-e_daysold)*-24;
+                                hrsold=Math.floor(e_hrsold);
+                                e_minsold=(hrsold-e_hrsold)*-60;
+                                minsold=Math.floor((hrsold-e_hrsold)*-60);
+                                seconds=Math.floor((minsold-e_minsold)*-60);
+                                momk.innerHTML=daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒" ;
+                                }
+                                show_date_time();
+                            </script>
+                        </div>
+                    </div>
+                    <script>
+                        function suit(){
+                            if($(".gd_main").width() >= 760){
+                                $(".gd_main").css('left', ($(window).width() / 2 - 400));
+                            }
+                            else{
+                                $(".gd_main").css('left', 'calc(10% - 20px)');
+                            }
+                            $("#d").css('height', $(".gd_copy").height() + 40);
+                        }
+                        suit();
+                        $(window).resize(function(){
+                            suit();
+                        });
+                    </script>
+                </body>
+            </html>

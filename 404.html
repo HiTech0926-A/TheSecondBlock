@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>404 - TheSecondBlock's Blog</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+        <div class="gd_head">
+            <a href="./index.html">
+                <img src="./img/Logo.png">
+            </a>
+        </div>
+        <div class="gd_main">
+            <div class="gd_block">
+               <div class="gd_box gd_post_header">
+                   <div>
+               		<div class="gd_copy_middle">
+                       <h1 style="text-align: center">亦余心之所善兮，虽九死其犹未悔。</h1>
+                       <h2 style="text-align: center">欢迎来到TheSecondBlock的404页!</h2>
+               		</div>
+                   </div>
+               </div>
+            <div class="gd_block">
+                <div class="gd_menu">
+                    <a href="./index.html">首页</a><a href="./friend.html">友链</a><a href="./about.html">关于</a>
+                </div>
+            </div>
+			<p style="width: 100%;text-align: center;font-size: 140px;height: 40px;">404</p>
+            <div class="gd_block">
+					<div class="gd_copy_middle">
+						<br><br><br><br><br>
+						<h2>找不到你说的啥页面</h2>
+						<h3>你怕不是搞错地方了哦</h3>
+					</div>
+                </div>
+            </div>
+<!--404专属页脚-->
+            <script>
+                function suit(){
+                    if($(".gd_main").width() >= 760){
+                        $(".gd_main").css('left', ($(window).width() / 2 - 400));
+                    }
+                    else{
+                         $(".gd_main").css('left', 'calc(10% - 20px)');
+                    }
+                    $("#d").css('height', $(".gd_copy").height() + 40);
+                }
+                suit();
+                $(window).resize(function(){
+                    suit();
+                });
+            </script>
+     </body>
+</html>
